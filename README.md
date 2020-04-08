@@ -7,10 +7,10 @@ Teremos o usuário gestor, ele poderá entrar na plaforma, em uma visão diferen
 
 ### funcionalidades
 
-> Cadastrar reclamação
-> Vizualizar reclamações
-> Filtrar reclamações de acordo com categorias
-> Dar like/dislike em reclamações
-> Reportar reclamação
-> Apagar reclamação (usuário gestor) 
-> Visualizar resumos (gráficos) sobre reclamações (usuário gestor)
+- Cadastrar reclamação
+- Vizualizar reclamações
+- Filtrar reclamações de acordo com categorias
+- Dar like/dislike em reclamações
+- Reportar reclamação
+- Apagar reclamação (usuário gestor) 
+- Visualizar resumos (gráficos) sobre reclamações (usuário gestor)
