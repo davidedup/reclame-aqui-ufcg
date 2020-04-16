@@ -14,3 +14,10 @@ Plataforma web para que alunos e funcionários da UFCG possam expressar suas rec
 - Reportar reclamação
 - Apagar reclamação (usuário gestor) 
 - Visualizar resumos (gráficos) sobre reclamações (usuário gestor)
+
+### telas
+
+- Principal: aparecem as últimas reclamaçes feitas além de ter um espaço para o fazer novas reclamações
+- Top Reclamações: mostrar as reclamações com maior relevância (mais likes)
+- Admin: é possível fazer ações sobre reclamações como apagar
+- Resumo: Mostrar quais os principais tipos de reclamações e mostra filtradas por uma categoria específica. 
