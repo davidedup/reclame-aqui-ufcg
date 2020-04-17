@@ -1,0 +1,22 @@
+{
+  "name": "reclame-aqui-ufcg",
+  "version": "1.0.0",
+  "description": "projeto dev web",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidedup/reclame-aqui-ufcg.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidedup/reclame-aqui-ufcg/issues"
+  },
+  "homepage": "https://github.com/davidedup/reclame-aqui-ufcg#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
