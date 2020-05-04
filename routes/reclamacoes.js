@@ -16,7 +16,7 @@ let reclamacoes = [
     numeroDeDenuncia: 0,
   },
   {
-    id: 0,
+    id: 1,
     nomeUsuario: "José",
     titulo: "Pova ruim",
     texto: "A prova de veotorial de francisco tava muito ruim",
@@ -77,6 +77,16 @@ router.put("/:id", function (req, res, next) {
   res.json(reclamacoes[req.params.id]);
   res.status("200");
 });
+
+exports.deletaReclamacao = function deletaReclamacao(id) {
+  if (reclamacoes[id] != undefined) {
+    let aux = reclamacoes[id];
+    reclamacoes.splice(id, 1);
+    return aux;
+  } else {
+    return false;
+  }
+}
 
 // Filtro para query
 function ordenarPorLike(a, b) {
