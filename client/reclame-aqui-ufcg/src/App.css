@@ -1,10 +1,27 @@
 .App {
-  text-align: center;
+  
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.ReclamacaoCard {
+  margin-left: 5px;
+  margin-top: 5px;
+  border: 2px solid green;
+  width: 700px;
+  height: 200px;
+}
+
+img {
+  position: relative;
+  top: 4%;
+  left: 5px;
+  height: 70px;
+  width: 70px;
+  align-self: flex-start;
 }
 
 @media (prefers-reduced-motion: no-preference) {
