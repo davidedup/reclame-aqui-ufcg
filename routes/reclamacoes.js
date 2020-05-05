@@ -63,6 +63,17 @@ router.get("/", function (req, res, next) {
   }
 });
 
+router.delete("/:id", function(req, res, next){
+  let id =  req.params.id
+  if(req.user == "admin" && req.senha == "admin"){
+      res.json(req[id])
+      res.status("200")
+  } else {
+      res.json("senha ou usuarios admin estão errados")
+      res.status("405")
+  }
+});
+
 /* POST - Cadastrando uma reclamação nova */
 router.post("/", function (req, res, next) {
   req.body.id = reclamacoes.length;
