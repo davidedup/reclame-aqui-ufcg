@@ -3,16 +3,21 @@ import Button from 'react-bootstrap/Button';
 
 
 class Reclamacao extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: null,
+    };
+  }
   render() {
     return (
       <div className="ReclamacaoCard">
         <img alt="" src="https://as1.ftcdn.net/jpg/01/81/76/56/500_F_181765661_yNJEm7i1k52QFwGyJxCD901bNu1298Fy.jpg" />
-        <h3>David Eduardo</h3>
+        <h3>{this.props.dadosReclamacao.userName}</h3>
+        <h2>{this.props.dadosReclamacao.titulo}</h2>
         <p>
-          O ar condicionado do LCC3 está fazendo um barulho muito grande. Não da
-          para ouvir o profe
+          {this.props.dadosReclamacao.texto}
         </p>
-        <Button variant="primary">Primary</Button>
         <button>like</button>
         <button>dislike</button>
         <button>reportar</button>
