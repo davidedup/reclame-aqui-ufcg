@@ -1,13 +1,13 @@
 import React from "react";
-import Reclamacao from "./reclamacao.js"
+import Reclamacao from "./components/pagina-principal/reclamacao.js";
 import "./App.css";
+import Button from "react-bootstrap/Button";
 
 function App() {
   return (
     <div className="App">
-      <Reclamacao>
-
-      </Reclamacao>
+      <Button variant="primary">Primary</Button>
+      <Reclamacao></Reclamacao>
     </div>
   );
 }
