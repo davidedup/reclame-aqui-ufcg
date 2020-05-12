@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import Button from 'react-bootstrap/Button';
-
+import React, { Component } from "react";
+import Button from "react-bootstrap/Button";
+import Jumbotron from 'react-bootstrap/Jumbotron'
+import './reclamacao.css';
 
 class Reclamacao extends Component {
   constructor(props) {
@@ -12,15 +13,18 @@ class Reclamacao extends Component {
   render() {
     return (
       <div className="ReclamacaoCard">
-        <img alt="" src="https://as1.ftcdn.net/jpg/01/81/76/56/500_F_181765661_yNJEm7i1k52QFwGyJxCD901bNu1298Fy.jpg" />
-        <h3>{this.props.dadosReclamacao.userName}</h3>
-        <h2>{this.props.dadosReclamacao.titulo}</h2>
-        <p>
-          {this.props.dadosReclamacao.texto}
-        </p>
-        <button>like</button>
-        <button>dislike</button>
-        <button>reportar</button>
+        <Jumbotron>
+          <h3>{this.props.dadosReclamacao.userName}</h3>
+          <h2>{this.props.dadosReclamacao.titulo}</h2>
+          <p>{this.props.dadosReclamacao.texto}</p>
+
+          <p>
+          <Button style={{margin: "2px 2px 2px 2px"}}>like</Button>
+          <Button style={{margin: "2px 2px 2px 2px"}}> dislike</Button>
+          <Button style={{margin: "2px 2px 2px 2px"}}>reportar</Button>
+    
+          </p>
+        </Jumbotron>
       </div>
     );
   }

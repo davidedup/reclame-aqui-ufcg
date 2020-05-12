@@ -6,15 +6,12 @@
   height: 40vmin;
   pointer-events: none;
 }
-
-.ReclamacaoCard {
-  margin-left: 5px;
-  margin-top: 5px;
-  border: 2px solid green;
-  width: 700px;
-  height: 200px;
+.reclamacaoContainer{
+  text-align: center;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 15px;
 }
-
 img {
   position: relative;
   top: 4%;
