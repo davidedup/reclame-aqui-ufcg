@@ -1,8 +1,12 @@
 .ReclamacaoCard {
   margin-left: 5px;
   margin-bottom: 5px;
+  margin-top: 5px;
   width: 700px;
-  height: 400px;
   margin: 0 auto;
   position: relative;
+}
+
+.reclamacaoFeedContainer{
+  margin-top: 10px;
 }

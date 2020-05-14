@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
-import Jumbotron from 'react-bootstrap/Jumbotron'
-import './reclamacao.css';
+import Jumbotron from "react-bootstrap/Jumbotron";
+import "./reclamacao.css";
 
 class Reclamacao extends Component {
   constructor(props) {
@@ -19,10 +19,15 @@ class Reclamacao extends Component {
           <p>{this.props.dadosReclamacao.texto}</p>
 
           <p>
-          <Button style={{margin: "2px 2px 2px 2px"}}>like</Button>
-          <Button style={{margin: "2px 2px 2px 2px"}}> dislike</Button>
-          <Button style={{margin: "2px 2px 2px 2px"}}>reportar</Button>
-    
+            <Button style={{ margin: "2px 2px 2px 2px" }}>
+              <i class="far fa-thumbs-up"></i>
+            </Button>
+            <Button style={{ margin: "2px 2px 2px 2px" }}>
+              <i class="far fa-thumbs-down"></i>
+            </Button>
+            <Button style={{ margin: "2px 2px 2px 2px" }}>
+              <i class="far fa-flag"></i>
+            </Button>
           </p>
         </Jumbotron>
       </div>

@@ -1,19 +1,20 @@
 import React, { Component } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-
+import { Link } from "react-router-dom";
 
 class NavBar extends Component {
   render() {
     return (
-      <Navbar bg="dark" variant="dark" >
-        <Navbar.Brand href="#home">Reclame Aqui UFCG</Navbar.Brand>
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand href="/">Reclame Aqui UFCG</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="#link">TOP</Nav.Link>
             <Nav.Link href="#link">Admin</Nav.Link>
+            <Nav.Link href="sobre">Sobre</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

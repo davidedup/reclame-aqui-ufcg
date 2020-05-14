@@ -1,29 +1,21 @@
 import React from "react";
-import Reclamacao from "./components/pagina-principal/reclamacao.js";
+import ReclamacoesFeed from "./components/pagina-principal/reclamacoesFeed.js";
 import "./App.css";
-import Button from "react-bootstrap/Button";
 import NavBar from "./components/navbar/navbar.js";
+import Sobre from "./components/sobre/sobre.js";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 function App() {
-  const reclamacao = {
-    userName: "David",
-    titulo: "Ar condicionado ruim",
-    texto:
-      "O ar condicionado do LCC3 está fazendo um barulho muito grande. Não da para ouvir o profe",
-  };
-  const reclamacao2 = {
-    userName: "Gabi",
-    titulo: "Prova ruim",
-    texto:
-      "A ultima prova de veotorial tinha assunto do primeiro estagio",
-  };
   return (
     <div className="App">
       <NavBar></NavBar>
-      <div className="reclamacaoContainer">
-        <Reclamacao dadosReclamacao={reclamacao} />
-        <Reclamacao dadosReclamacao={reclamacao2} />
-      </div>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/sobre" component={Sobre} />
+          <Route path="/" component={ReclamacoesFeed} />
+          
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
