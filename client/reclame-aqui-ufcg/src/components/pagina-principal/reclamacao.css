@@ -10,3 +10,12 @@
 .reclamacaoFeedContainer{
   margin-top: 10px;
 }
+
+.reclamacaoCreator{
+  width: 700px;
+  margin-top: 15px;
+  margin: 0 auto;
+  background-color: #e9ecef;
+  padding: 10px;
+
+}

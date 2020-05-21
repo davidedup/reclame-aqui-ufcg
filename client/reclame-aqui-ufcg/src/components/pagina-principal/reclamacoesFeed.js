@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Reclamacao from "./reclamacao.js";
+import ReclamacaoCreator from "./reclamacaoCreator.js";
 import "./reclamacao.css";
 
 class ReclamacoesFeed extends Component {
@@ -8,6 +9,7 @@ class ReclamacoesFeed extends Component {
     this.like = this.like.bind(this);
     this.dislike = this.dislike.bind(this);
     this.report = this.report.bind(this);
+    this.postaReclamacao = this.postaReclamacao.bind(this);
     this.state = {
       reclamacoes: [
         {
@@ -19,6 +21,7 @@ class ReclamacoesFeed extends Component {
           likes: 10,
           dislike: 1,
           reports: 10,
+          tipoDeUsuario: "professor",
         },
         {
           id: 1,
@@ -29,6 +32,7 @@ class ReclamacoesFeed extends Component {
           likes: 5,
           dislike: 0,
           reports: 10,
+          tipoDeUsuario: "aluno",
         },
       ],
     };
@@ -46,21 +50,35 @@ class ReclamacoesFeed extends Component {
     this.setState({ reclamacoes: newState });
   }
 
-
   report(id) {
     var newState = this.state.reclamacoes;
     newState[id].reports++;
     this.setState({ reclamacoes: newState });
   }
 
+  postaReclamacao(text) {
+    alert(text)
+  }
+
   render() {
     return (
-      <div className="reclamacaoFeedContainer">
-        {this.state.reclamacoes.map((reclamacao, i) => {
-          return (
-            <Reclamacao like={this.like} dislike={this.dislike} report={this.report} key={i} dadosReclamacao={reclamacao} />
-          );
-        })}
+      <div>
+        <ReclamacaoCreator postaReclamacao={this.postaReclamacao}>
+        </ReclamacaoCreator>
+
+        <div className="reclamacaoFeedContainer">
+          {this.state.reclamacoes.map((reclamacao, i) => {
+            return (
+              <Reclamacao
+                like={this.like}
+                dislike={this.dislike}
+                report={this.report}
+                key={i}
+                dadosReclamacao={reclamacao}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   }

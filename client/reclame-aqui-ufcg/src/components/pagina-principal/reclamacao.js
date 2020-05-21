@@ -30,6 +30,7 @@ class Reclamacao extends Component {
           <h3>{this.props.dadosReclamacao.userName}</h3>
           <h2>{this.props.dadosReclamacao.titulo}</h2>
           <p>{this.props.dadosReclamacao.texto}</p>
+          <h5>{this.props.dadosReclamacao.tipoDeUsuario}</h5>
 
           <p>
             <Button
