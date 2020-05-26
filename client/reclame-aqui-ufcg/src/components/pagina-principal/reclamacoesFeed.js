@@ -56,15 +56,17 @@ class ReclamacoesFeed extends Component {
     this.setState({ reclamacoes: newState });
   }
 
-  postaReclamacao(text) {
-    alert(text)
+  postaReclamacao(reclamacao) {
+    var newState = this.state.reclamacoes;
+    this.setState({ reclamacao: newState.push(reclamacao) });
   }
 
   render() {
     return (
       <div>
-        <ReclamacaoCreator postaReclamacao={this.postaReclamacao}>
-        </ReclamacaoCreator>
+        <ReclamacaoCreator
+          postaReclamacao={this.postaReclamacao}
+        ></ReclamacaoCreator>
 
         <div className="reclamacaoFeedContainer">
           {this.state.reclamacoes.map((reclamacao, i) => {
