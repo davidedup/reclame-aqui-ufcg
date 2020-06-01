@@ -12,7 +12,7 @@ class NavBar extends Component {
           <Nav className="mr-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="#link">TOP</Nav.Link>
-            <Nav.Link href="#link">Admin</Nav.Link>
+            <Nav.Link href="admin">Admin</Nav.Link>
             <Nav.Link href="sobre">Sobre</Nav.Link>
           </Nav>
         </Navbar.Collapse>
