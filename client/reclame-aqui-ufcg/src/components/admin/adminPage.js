@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Grafico from "./grafico.js";
 import Denuncias from "./denuncias.js";
+import "./admin.css";
+
 
 class AdminPage extends Component {
   constructor(props) {
@@ -8,8 +10,9 @@ class AdminPage extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="adminPageContainer">
         <Denuncias />
+        <br></br>
         <Grafico />
       </div>
     );
