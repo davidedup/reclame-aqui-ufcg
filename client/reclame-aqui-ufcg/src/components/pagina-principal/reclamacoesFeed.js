@@ -57,6 +57,7 @@ class ReclamacoesFeed extends Component {
   }
 
   postaReclamacao(reclamacao) {
+    reclamacao.id = this.state.reclamacoes.length
     var newState = this.state.reclamacoes;
     this.setState({ reclamacao: newState.push(reclamacao) });
   }
