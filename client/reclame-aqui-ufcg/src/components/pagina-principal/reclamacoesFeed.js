@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Reclamacao from "./reclamacao.js";
 import ReclamacaoCreator from "./reclamacaoCreator.js";
+import Button from "react-bootstrap/Button";
 import "./reclamacao.css";
 
 class ReclamacoesFeed extends Component {
@@ -35,7 +36,19 @@ class ReclamacoesFeed extends Component {
           tipoDeUsuario: "aluno",
         },
       ],
+      response: {},
     };
+  }
+
+  async componentDidUpdate() {
+    const response = await fetch("http://localhost:3001/reclamacoes", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    this.setState({ response: response.body });
   }
 
   like(id) {
@@ -57,7 +70,7 @@ class ReclamacoesFeed extends Component {
   }
 
   postaReclamacao(reclamacao) {
-    reclamacao.id = this.state.reclamacoes.length
+    reclamacao.id = this.state.reclamacoes.length;
     var newState = this.state.reclamacoes;
     this.setState({ reclamacao: newState.push(reclamacao) });
   }
@@ -65,6 +78,9 @@ class ReclamacoesFeed extends Component {
   render() {
     return (
       <div>
+        <Button variant="primary" onClick={this.callApi.bind(this)}>
+          testa API
+        </Button>
         <ReclamacaoCreator
           postaReclamacao={this.postaReclamacao}
         ></ReclamacaoCreator>
