@@ -78,9 +78,6 @@ class ReclamacoesFeed extends Component {
   render() {
     return (
       <div>
-        <Button variant="primary" onClick={this.callApi.bind(this)}>
-          testa API
-        </Button>
         <ReclamacaoCreator
           postaReclamacao={this.postaReclamacao}
         ></ReclamacaoCreator>
