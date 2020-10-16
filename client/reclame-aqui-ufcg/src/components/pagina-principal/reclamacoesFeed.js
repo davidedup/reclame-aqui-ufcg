@@ -11,15 +11,14 @@ class ReclamacoesFeed extends Component {
     this.like = this.like.bind(this);
     this.dislike = this.dislike.bind(this);
     this.report = this.report.bind(this);
-    this.postaReclamacao = this.postaReclamacao.bind(this);
-    this.testaAPI = this.testaAPI.bind(this);
+    this.postaReclamacao = this.postaReclamacao.bind(this); 
 
     this.state = {
       reclamacoes: [],
     };
   }
 
-  async testaAPI() {
+  async componentDidMount() {
     const resp = await axios.get("http://localhost:3001/reclamacoes");
     const reclamacoesAux = resp.data;
 
@@ -53,7 +52,6 @@ class ReclamacoesFeed extends Component {
   render() {
     return (
       <div>
-        <Button onClick={this.testaAPI}>testa</Button>
         <ReclamacaoCreator
           postaReclamacao={this.postaReclamacao}
         ></ReclamacaoCreator>
