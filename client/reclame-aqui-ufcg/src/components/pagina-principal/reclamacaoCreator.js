@@ -9,33 +9,40 @@ class ReclamacaoCreator extends Component {
     this.handleChangeTitulo = this.handleChangeTitulo.bind(this);
     this.handleChangeReclamacao = this.handleChangeReclamacao.bind(this);
     this.handleChangeTipoDeUsuario = this.handleChangeTipoDeUsuario.bind(this);
+    this.handleChangeTags = this.handleChangeTags.bind(this);
     this.state = {
       id: -1,
-      userName: "",
+      nomeUsuario: "",
       titulo: "",
       texto: "",
-      tipoDeUsuario: "",
+      tags: [],
       likes: 0,
-      dislike: 0,
-      reports: 0,
+      dislikes: 0,
+      tipoAutor: "",
+      denunciada: false,
+      numeroDeDenuncia: 0
+
     };
   }
   postaReclamacao() {
+    console.log("posta reclamacao creator")
     this.props.postaReclamacao(this.state);
     this.setState({
       id: -1,
-      userName: "",
+      nomeUsuario: "",
       titulo: "",
       texto: "",
-      tipoDeUsuario: "",
+      tags: [],
       likes: 0,
-      dislike: 0,
-      reports: 0,
+      dislikes: 0,
+      tipoAutor: "",
+      denunciada: null,
+      numeroDeDenuncia: 0
     });
   }
 
   handleChangeNome(event) {
-    this.setState({ userName: event.target.value });
+    this.setState({ nomeUsuario: event.target.value });
   }
 
   handleChangeTitulo(event) {
@@ -47,7 +54,11 @@ class ReclamacaoCreator extends Component {
   }
 
   handleChangeTipoDeUsuario(event) {
-    this.setState({ tipoDeUsuario: event.target.value });
+    this.setState({ tipoAutor: event.target.value });
+  }
+
+  handleChangeTags(event) {
+    this.setState({ tags: event.target.value.split(",") });
   }
 
   render() {
@@ -59,7 +70,7 @@ class ReclamacaoCreator extends Component {
             <Form.Control
               onChange={this.handleChangeNome}
               type="name"
-              value={this.state.userName}
+              value={this.state.nomeUsuario}
               placeholder="Coloque seu nome aqui"
             />
           </Form.Group>
@@ -74,7 +85,7 @@ class ReclamacaoCreator extends Component {
             />
           </Form.Group>
 
-          <Form.Group controlId="reclamao">
+          <Form.Group controlId="reclamcao">
             <Form.Label>Reclamação</Form.Label>
             <Form.Control
               as="textarea"
@@ -82,6 +93,17 @@ class ReclamacaoCreator extends Component {
               rows="2"
               placeholder="Descrição da reclamação"
               value={this.state.texto}
+            />
+          </Form.Group>
+
+          <Form.Group controlId="tags">
+            <Form.Label>tags</Form.Label>
+            <Form.Control
+              as="textarea"
+              onChange={this.handleChangeTags}
+              rows="1"
+              placeholder="Insira suas tags separadas por virgula (,)"
+              value={this.state.tags}
             />
           </Form.Group>
 

@@ -23,13 +23,23 @@ class Reclamacao extends Component {
     this.props.report(this.props.dadosReclamacao.id);
   }
 
+  makeStringOfTags() {
+    var resp = "";
+
+    this.props.dadosReclamacao.tags.forEach((tag) => {
+      resp += "#" + tag + "   ";
+    });
+    return resp;
+  }
+
   render() {
     return (
       <div className="ReclamacaoCard">
         <Jumbotron>
-          <h3>{this.props.dadosReclamacao.userName}</h3>
+          <h3>{this.props.dadosReclamacao.nomeUsuario}</h3>
           <h2>{this.props.dadosReclamacao.titulo}</h2>
           <p>{this.props.dadosReclamacao.texto}</p>
+          <p>{this.makeStringOfTags()}</p>
           <h5>{this.props.dadosReclamacao.tipoDeUsuario}</h5>
 
           <p>

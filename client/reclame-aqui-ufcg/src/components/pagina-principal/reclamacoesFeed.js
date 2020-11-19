@@ -21,7 +21,6 @@ class ReclamacoesFeed extends Component {
   async componentDidMount() {
     const resp = await axios.get("http://localhost:3001/reclamacoes");
     const reclamacoesAux = resp.data;
-
     this.setState({ reclamacoes: reclamacoesAux });
   }
 
@@ -43,10 +42,19 @@ class ReclamacoesFeed extends Component {
     this.setState({ reclamacoes: newState });
   }
 
-  postaReclamacao(reclamacao) {
+  async postaReclamacao(reclamacao) {
     reclamacao.id = this.state.reclamacoes.length;
     var newState = this.state.reclamacoes;
-    this.setState({ reclamacao: newState.push(reclamacao) });
+    console.log("olá")
+    this.setState({ reclamacao: newState.push(reclamacao)});
+    console.log("tentou chamar ",  reclamacao)
+    return await axios
+        .post('http://localhost:3001/reclamacoes', reclamacao, {
+          headers: {
+            'Content-Type': 'application/json'
+          }})
+        .then((response) => response)
+        .catch((error) => error.response);
   }
 
   render() {

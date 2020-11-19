@@ -88,6 +88,7 @@ router.delete("/:id", function(req, res, next){
 
 /* POST - Cadastrando uma reclamação nova */
 router.post("/", function (req, res, next) {
+  req.header("Content-Type", "application/json")
   req.body.id = reclamacoes.length;
   reclamacoes.push(req.body);
   res.json(req.body);
