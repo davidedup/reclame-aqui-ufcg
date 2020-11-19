@@ -10,22 +10,34 @@ let reclamacoes = [
       "O ar condicionado do CAA401 ta quebrado e a aula de calculo 2 tem gente de mais o calor é insuportavel",
     tags: ["estrutura", "caa"],
     likes: 10,
-    dislikes: 9,
+    dislikes: 5,
     tipoAutor: "funcionario",
     denunciada: false,
-    numeroDeDenuncia: 0,
+    numeroDeDenuncia: 25,
   },
   {
     id: 1,
     nomeUsuario: "José",
-    titulo: "Pova ruim",
+    titulo: "Prova ruim",
     texto: "A prova de veotorial de francisco tava muito ruim",
     tags: ["disciplina", "ensino"],
-    likes: 15,
-    dislikes: 20,
+    likes: 8,
+    dislikes: 9,
     tipoAutor: "aluno",
     denunciada: true,
-    numeroDeDenuncia: 2,
+    numeroDeDenuncia: 20,
+  },
+  {
+    id: 2,
+    nomeUsuario: "MAria",
+    titulo: "banheiro não funciona",
+    texto: "o banhheiro do CAA não funciona ",
+    tags: ["infra", "caa"],
+    likes: 30,
+    dislikes: 1,
+    tipoAutor: "aluno",
+    denunciada: true,
+    numeroDeDenuncia: 5,
   },
 ];
 
@@ -42,20 +54,20 @@ router.get("/", function (req, res, next) {
     var reclamacoesAux = reclamacoes;
 
     if (campo == "like") {
-      reclamacoesAux.sort(ordenarPorLike);
+      console.log(reclamacoesAux)
+      reclamacaoAux = reclamacoesAux.sort(ordenarPorLike);
+      console.log(reclamacoesAux)
     } else if (campo == "denuncia") {
-      reclamacoesAux.sort(ordenarPorDenuncia);
+      reclamacaoAux = reclamacoesAux .sort(ordenarPorDenuncia);
     } else if (campo == "dislike") {
-      reclamacoesAux.sort(ordenarPorDislike);
+      reclamacaoAux = reclamacoesAux.sort(ordenarPorDislike);
     } else if (campo == "tipoAutor") {
-      console.log("Entrou aquiiiii");
       if (tipo == "funcionario") {
-        console.log("foi funcionario");
-        reclamacoesAux = reclamacoesAux.filter(ehFuncionario);
+        reclamacoesAux.filter(ehFuncionario);
       } else if (tipo == "aluno") {
-        reclamacoesAux = reclamacoesAux.filter(ehAluno);
+        reclamacoesAux.filter(ehAluno);
       } else {
-        reclamacoesAux = reclamacoesAux.filter(ehProfessor);
+        reclamacoesAux.filter(ehProfessor);
       }
     }
     res.json(reclamacoesAux);
@@ -101,13 +113,13 @@ exports.deletaReclamacao = function deletaReclamacao(id) {
 
 // Filtro para query
 function ordenarPorLike(a, b) {
-  return b.likes - a.likes;
+  return  b.likes - a.likes;
 }
 function ordenarPorDislike(a, b) {
-  return b.likes - a.likes;
+  return  b.dislikes - a.dislikes;
 }
 function ordenarPorDenuncia(a, b) {
-  return b.numeroDeDenuncia - a.numeroDeDenuncia;
+  return  b.numeroDeDenuncia - a.numeroDeDenuncia;
 }
 function ehFuncionario(a) {
   if (a.tipoAutor == "funcionario") {

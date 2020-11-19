@@ -4,6 +4,7 @@ import "./App.css";
 import NavBar from "./components/navbar/navbar.js";
 import Sobre from "./components/sobre/sobre.js";
 import AdminPage from "./components/admin/adminPage.js";
+import TopReclamacoes from "./components/top-reclamacoes/topReclamacoes.js";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Switch>
           <Route path="/sobre" component={Sobre} />
           <Route path="/admin" component={AdminPage} />
+          <Route path="/top" component={TopReclamacoes} />
           <Route path="/" component={ReclamacoesFeed} />
         </Switch>
       </BrowserRouter>
