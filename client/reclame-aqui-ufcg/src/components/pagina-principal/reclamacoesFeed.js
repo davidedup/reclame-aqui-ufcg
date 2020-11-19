@@ -27,29 +27,40 @@ class ReclamacoesFeed extends Component {
   like(id) {
     var newState = this.state.reclamacoes;
     newState[id].likes++;
+    this.atualizaReclamacao(newState[id])
     this.setState({ reclamacoes: newState });
   }
 
   dislike(id) {
     var newState = this.state.reclamacoes;
-    newState[id].dislike++;
+    newState[id].dislikes++;
+    this.atualizaReclamacao(newState[id])
     this.setState({ reclamacoes: newState });
   }
 
   report(id) {
     var newState = this.state.reclamacoes;
-    newState[id].reports++;
+    newState[id].numeroDeDenuncia++;
+    this.atualizaReclamacao(newState[id])
     this.setState({ reclamacoes: newState });
   }
 
   async postaReclamacao(reclamacao) {
     reclamacao.id = this.state.reclamacoes.length;
-    var newState = this.state.reclamacoes;
-    console.log("olá")
+    var newState = this.state.reclamacoes;   
     this.setState({ reclamacao: newState.push(reclamacao)});
-    console.log("tentou chamar ",  reclamacao)
     return await axios
         .post('http://localhost:3001/reclamacoes', reclamacao, {
+          headers: {
+            'Content-Type': 'application/json'
+          }})
+        .then((response) => response)
+        .catch((error) => error.response);
+  }
+
+  async atualizaReclamacao(reclamacao) {
+    return await axios
+        .put('http://localhost:3001/reclamacoes/' + reclamacao.id, reclamacao, {
           headers: {
             'Content-Type': 'application/json'
           }})
@@ -71,6 +82,7 @@ class ReclamacoesFeed extends Component {
                 like={this.like}
                 dislike={this.dislike}
                 report={this.report}
+                showButtons={true}
                 key={i}
                 dadosReclamacao={reclamacao}
               />

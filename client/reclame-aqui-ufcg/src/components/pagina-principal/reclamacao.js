@@ -16,6 +16,7 @@ class Reclamacao extends Component {
   }
 
   dislike() {
+    console.log("OI apertou dislike");
     this.props.dislike(this.props.dadosReclamacao.id);
   }
 
@@ -42,29 +43,31 @@ class Reclamacao extends Component {
           <p>{this.makeStringOfTags()}</p>
           <h5>{this.props.dadosReclamacao.tipoDeUsuario}</h5>
 
-          <p>
-            <Button
-              onClick={this.like.bind(this, this.props.id)}
-              style={{ margin: "2px 2px 2px 2px" }}
-            >
-              <i className="far fa-thumbs-up"></i>
-              <i> {this.props.dadosReclamacao.likes} </i>
-            </Button>
-            <Button
-              onClick={this.dislike.bind(this, this.props.id)}
-              style={{ margin: "2px 2px 2px 2px" }}
-            >
-              <i className="far fa-thumbs-down"></i>
-              <i> {this.props.dadosReclamacao.dislikes}</i>
-            </Button>
-            <Button
-              style={{ margin: "2px 2px 2px 2px" }}
-              onClick={this.report.bind(this, this.props.id)}
-            >
-              <i className="far fa-flag"></i>
-              <i> {this.props.dadosReclamacao.numeroDeDenuncia}</i>
-            </Button>
-          </p>
+          {this.props.showButtons && (
+            <p>
+              <Button
+                onClick={this.like.bind(this, this.props.id)}
+                style={{ margin: "2px 2px 2px 2px" }}
+              >
+                <i className="far fa-thumbs-up"></i>
+                <i> {this.props.dadosReclamacao.likes} </i>
+              </Button>
+              <Button
+                onClick={this.dislike.bind(this, this.props.id)}
+                style={{ margin: "2px 2px 2px 2px" }}
+              >
+                <i className="far fa-thumbs-down"></i>
+                <i> {this.props.dadosReclamacao.dislikes}</i>
+              </Button>
+              <Button
+                style={{ margin: "2px 2px 2px 2px" }}
+                onClick={this.report.bind(this, this.props.id)}
+              >
+                <i className="far fa-flag"></i>
+                <i> {this.props.dadosReclamacao.numeroDeDenuncia}</i>
+              </Button>
+            </p>
+          )}
         </Jumbotron>
       </div>
     );
