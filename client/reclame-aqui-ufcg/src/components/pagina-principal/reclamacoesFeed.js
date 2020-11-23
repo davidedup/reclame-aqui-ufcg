@@ -83,6 +83,7 @@ class ReclamacoesFeed extends Component {
                 dislike={this.dislike}
                 report={this.report}
                 showButtons={true}
+                showDeleteButton={false}
                 key={i}
                 dadosReclamacao={reclamacao}
               />

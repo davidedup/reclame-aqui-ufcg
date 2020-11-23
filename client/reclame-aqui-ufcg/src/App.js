@@ -6,6 +6,7 @@ import Sobre from "./components/sobre/sobre.js";
 import AdminPage from "./components/admin/adminPage.js";
 import TopReclamacoes from "./components/top-reclamacoes/topReclamacoes.js";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import LoginPage from "./components/login-page/loginPage.js"
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Switch>
           <Route path="/sobre" component={Sobre} />
           <Route path="/admin" component={AdminPage} />
+          <Route path="/login" component={LoginPage} />
           <Route path="/top" component={TopReclamacoes} />
           <Route path="/" component={ReclamacoesFeed} />
         </Switch>

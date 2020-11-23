@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+var basicAuth = require("basic-auth");
 
 let reclamacoes = [
   {
@@ -11,7 +12,7 @@ let reclamacoes = [
     tags: ["estrutura", "caa"],
     likes: 10,
     dislikes: 5,
-    tipoAutor: "funcionario",
+    tipoAutor: "Funcionário",
     denunciada: false,
     numeroDeDenuncia: 25,
   },
@@ -23,7 +24,7 @@ let reclamacoes = [
     tags: ["disciplina", "ensino"],
     likes: 8,
     dislikes: 9,
-    tipoAutor: "aluno",
+    tipoAutor: "Professor",
     denunciada: true,
     numeroDeDenuncia: 20,
   },
@@ -35,7 +36,7 @@ let reclamacoes = [
     tags: ["infra", "caa"],
     likes: 30,
     dislikes: 1,
-    tipoAutor: "aluno",
+    tipoAutor: "Aluno",
     denunciada: true,
     numeroDeDenuncia: 5,
   },
@@ -54,11 +55,11 @@ router.get("/", function (req, res, next) {
     var reclamacoesAux = reclamacoes;
 
     if (campo == "like") {
-      console.log(reclamacoesAux)
+      console.log(reclamacoesAux);
       reclamacaoAux = reclamacoesAux.sort(ordenarPorLike);
-      console.log(reclamacoesAux)
+      console.log(reclamacoesAux);
     } else if (campo == "denuncia") {
-      reclamacaoAux = reclamacoesAux .sort(ordenarPorDenuncia);
+      reclamacaoAux = reclamacoesAux.sort(ordenarPorDenuncia);
     } else if (campo == "dislike") {
       reclamacaoAux = reclamacoesAux.sort(ordenarPorDislike);
     } else if (campo == "tipoAutor") {
@@ -75,20 +76,29 @@ router.get("/", function (req, res, next) {
   }
 });
 
-router.delete("/:id", function(req, res, next){
-  let id =  req.params.id
-  if(req.user == "admin" && req.senha == "admin"){
-      res.json(req[id])
-      res.status("200")
-  } else {
-      res.json("senha ou usuarios admin estão errados")
-      res.status("405")
+router.delete("/:id", function (req, res, next) {
+  console.log("entrou no delete");
+  var user = basicAuth(req);
+  const id = Number(req.params.id);
+  let reclamacaoAux = null;
+
+  reclamacoes.forEach((reclamacao, i) => {
+    if (reclamacao.id == id) {
+      reclamacaoAux = reclamacao;
+      reclamacoes.splice(i, 1);
+    }
+  });
+  if (reclamacaoAux == null) {
+    res.json("id não encontrado");
+    res.status("500");
   }
+  res.json(reclamacaoAux);
+  res.status("200");
 });
 
 /* POST - Cadastrando uma reclamação nova */
 router.post("/", function (req, res, next) {
-  req.header("Content-Type", "application/json")
+  req.header("Content-Type", "application/json");
   req.body.id = reclamacoes.length;
   reclamacoes.push(req.body);
   res.json(req.body);
@@ -102,6 +112,24 @@ router.put("/:id", function (req, res, next) {
   res.status("200");
 });
 
+router.get("/grafico-categorias-pessoa", function (req, res, next) {
+  categories = ["Funcionário","Aluno","Professor"]
+  series = [0,0,0]
+
+  reclamacoes.forEach((reclamacao) => {
+    if(reclamacao.tipoAutor == "Funcionário"){
+      series[0]++
+    }else if(reclamacao.tipoAutor == "Aluno") {
+      series[1]++
+    } else {
+      series[2]++
+    }
+  });
+  res.json({categories, series});
+  res.status("200");
+
+});
+
 exports.deletaReclamacao = function deletaReclamacao(id) {
   if (reclamacoes[id] != undefined) {
     let aux = reclamacoes[id];
@@ -110,17 +138,17 @@ exports.deletaReclamacao = function deletaReclamacao(id) {
   } else {
     return false;
   }
-}
+};
 
 // Filtro para query
 function ordenarPorLike(a, b) {
-  return  b.likes - a.likes;
+  return b.likes - a.likes;
 }
 function ordenarPorDislike(a, b) {
-  return  b.dislikes - a.dislikes;
+  return b.dislikes - a.dislikes;
 }
 function ordenarPorDenuncia(a, b) {
-  return  b.numeroDeDenuncia - a.numeroDeDenuncia;
+  return b.numeroDeDenuncia - a.numeroDeDenuncia;
 }
 function ehFuncionario(a) {
   if (a.tipoAutor == "funcionario") {

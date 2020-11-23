@@ -1,4 +1,14 @@
-.adminPageContainer{
-    text-align: center;
-    display: block;
+.adminPageContainer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.graficoContainer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 800px;
 }

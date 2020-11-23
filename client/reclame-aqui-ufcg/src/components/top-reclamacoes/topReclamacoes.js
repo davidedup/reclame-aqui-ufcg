@@ -77,6 +77,7 @@ class TopReclamacoes extends Component {
               report={reclamacao.report}
               key={reclamacao.id}
               dadosReclamacao={reclamacao}
+              showDeleteButton={false}
               showButtons={false}
             />
           );
