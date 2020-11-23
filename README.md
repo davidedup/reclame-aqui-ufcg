@@ -29,13 +29,18 @@ Plataforma web para que alunos e funcionários da UFCG possam expressar suas rec
 
 #### Back-end
 Para executar o back-end você deve entrar no diretório  ** ./server ** e executar os comandos:
+
 	``` 
 	$ npm install
+	
 	$ DEBUG=reclame-aqui-ufcg:* npm start
 	```
+
 #### Front-end
 Para executar o front-end você deve entrar no diretório  ** ./client ** e executar os comandos:
+
 	```
 	$ npm install
+
 	$ npm start
     ``` 
