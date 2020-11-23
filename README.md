@@ -32,7 +32,7 @@ Para executar o back-end você deve entrar no diretório  ** ./server ** e execu
 
 	``` 
 	$ npm install
-	
+
 	$ DEBUG=reclame-aqui-ufcg:* npm start
 	```
 
@@ -44,3 +44,7 @@ Para executar o front-end você deve entrar no diretório  ** ./client ** e exec
 
 	$ npm start
     ``` 
+
+### Usuário administrador
+
+O usuário e senha do administrador é 'admin'. Use pra logar nas funções de administrador. 
