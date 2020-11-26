@@ -9,19 +9,25 @@ class Reclamacao extends Component {
     super(props);
     this.state = {
       value: null,
+      isLiked: false,
+      isDisliked: false,
+      isReported: false,
     };
   }
 
   like() {
     this.props.like(this.props.dadosReclamacao.id);
+    this.setState({ isLiked: true });
   }
 
   dislike() {
     this.props.dislike(this.props.dadosReclamacao.id);
+    this.setState({ isDisliked: true });
   }
 
   report() {
     this.props.report(this.props.dadosReclamacao.id);
+    this.setState({ isReported: true });
   }
 
   async delete() {
@@ -44,6 +50,69 @@ class Reclamacao extends Component {
   }
 
   render() {
+    const isLiked = this.state.isLiked;
+    let likedButton;
+    if (isLiked) {
+      likedButton = (
+        <Button class="btn btn-secondary" style={{ margin: "2px 2px 2px 2px" }}>
+          <i className="far fa-thumbs-up"></i>
+          <i> {this.props.dadosReclamacao.likes} </i>
+        </Button>
+      );
+    } else {
+      likedButton = (
+        <Button
+          onClick={this.like.bind(this, this.props.id)}
+          style={{ margin: "2px 2px 2px 2px" }}
+        >
+          <i className="far fa-thumbs-up"></i>
+          <i> {this.props.dadosReclamacao.likes} </i>
+        </Button>
+      );
+    }
+
+    const isDisliked = this.state.isDisliked;
+    let dislikedButton;
+    if (isDisliked) {
+      dislikedButton = (
+        <Button class="btn btn-secondary" style={{ margin: "2px 2px 2px 2px" }}>
+          <i className="far fa-thumbs-down"></i>
+          <i> {this.props.dadosReclamacao.dislikes}</i>
+        </Button>
+      );
+    } else {
+      dislikedButton = (
+        <Button
+          onClick={this.dislike.bind(this, this.props.id)}
+          style={{ margin: "2px 2px 2px 2px" }}
+        >
+          <i className="far fa-thumbs-down"></i>
+          <i> {this.props.dadosReclamacao.dislikes}</i>
+        </Button>
+      );
+    }
+
+    const isReported = this.state.isReported;
+    let reportButton;
+    if (isReported) {
+      reportButton = (
+        <Button style={{ margin: "2px 2px 2px 2px" }} class="btn btn-secondary">
+          <i className="far fa-flag"></i>
+          <i> {this.props.dadosReclamacao.numeroDeDenuncia}</i>
+        </Button>
+      );
+    } else {
+      reportButton = (
+        <Button
+          style={{ margin: "2px 2px 2px 2px" }}
+          onClick={this.report.bind(this, this.props.id)}
+        >
+          <i className="far fa-flag"></i>
+          <i> {this.props.dadosReclamacao.numeroDeDenuncia}</i>
+        </Button>
+      );
+    }
+
     return (
       <div className="ReclamacaoCard">
         <Jumbotron>
@@ -54,27 +123,9 @@ class Reclamacao extends Component {
           <h5>{this.props.dadosReclamacao.tipoDeUsuario}</h5>
           {this.props.showButtons && (
             <p>
-              <Button
-                onClick={this.like.bind(this, this.props.id)}
-                style={{ margin: "2px 2px 2px 2px" }}
-              >
-                <i className="far fa-thumbs-up"></i>
-                <i> {this.props.dadosReclamacao.likes} </i>
-              </Button>
-              <Button
-                onClick={this.dislike.bind(this, this.props.id)}
-                style={{ margin: "2px 2px 2px 2px" }}
-              >
-                <i className="far fa-thumbs-down"></i>
-                <i> {this.props.dadosReclamacao.dislikes}</i>
-              </Button>
-              <Button
-                style={{ margin: "2px 2px 2px 2px" }}
-                onClick={this.report.bind(this, this.props.id)}
-              >
-                <i className="far fa-flag"></i>
-                <i> {this.props.dadosReclamacao.numeroDeDenuncia}</i>
-              </Button>
+              {likedButton}
+              {dislikedButton}
+              {reportButton}
             </p>
           )}
           {!this.props.showButtons && (
