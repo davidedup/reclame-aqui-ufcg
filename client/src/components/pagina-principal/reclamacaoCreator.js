@@ -54,6 +54,7 @@ class ReclamacaoCreator extends Component {
   }
 
   handleChangeTipoDeUsuario(event) {
+    console.log("OLÀ")
     this.setState({ tipoAutor: event.target.value });
   }
 
@@ -111,8 +112,8 @@ class ReclamacaoCreator extends Component {
             <Form.Label>Eu sou:</Form.Label>
             <Form.Control
               as="select"
-              onChange={this.tipoDeUsuarioTipoDeUsuario}
-              value={this.state.tipoDeUsuario}
+              onChange={this.handleChangeTipoDeUsuario}
+              value={this.state.tipoAutor}
             >
               <option>Professor</option>
               <option>Aluno</option>
