@@ -77,6 +77,22 @@ class Reclamacao extends Component {
               </Button>
             </p>
           )}
+          {!this.props.showButtons && (
+            <div>
+              <div>
+                <i className="far fa-thumbs-up"></i>
+                <i> {this.props.dadosReclamacao.likes} </i>
+              </div>
+              <div>
+                <i className="far fa-thumbs-down"></i>
+                <i> {this.props.dadosReclamacao.dislikes}</i>
+              </div>
+              <div>
+                <i className="far fa-flag"></i>
+                <i> {this.props.dadosReclamacao.numeroDeDenuncia}</i>
+              </div>
+            </div>
+          )}
           {this.props.showDeleteButton && (
             <Button
               variant="danger"
